@@ -1,17 +1,18 @@
 <?php
-session_start();
-if (!isset($_SESSION["user"])) {
-   header("Location: login.php");
-//    exit(); // Always exit after a redirect
-}
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-require_once('database.php');
+require_once("connection.php");
+
 $query = "SELECT * FROM users";
-$result = mysqli_query($database, $query); // Assuming you have defined $connection
+$result = mysqli_query($con, $query);
 
+if (!$result) {
+    die("Query Error: " . mysqli_error($con));
+}
 ?>
 
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,13 +30,12 @@ $result = mysqli_query($database, $query); // Assuming you have defined $connect
                         <table class="table table-bordered">
                             <tr>
                                 <td> User ID </td>
-                                <td> User Name </td>
-                                <td> User Email </td>
-                                <td> User Age </td>
+                                <td> Full name </td>
+                                <td> Email </td>
+                                <td> Role </td>
                                 <td> Edit  </td>
                                 <td> Delete </td>
                             </tr>
-
                             <?php 
                                     
                                     while($row=mysqli_fetch_assoc($result))
