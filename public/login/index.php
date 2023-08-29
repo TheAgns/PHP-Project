@@ -20,7 +20,7 @@ if (isset($_SESSION["user"])) {
         if (isset($_POST["login"])) {
             $email = $_POST["email"];
             $password = $_POST["password"];
-            require_once "database.php";
+            require_once (PRIVATE_PATH . '/database.php');
             $sql = "SELECT * FROM users WHERE email = '$email'";
             $result = mysqli_query($conn, $sql);
             $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
@@ -65,5 +65,4 @@ if (isset($_SESSION["user"])) {
             });
         });
     </script>
-</body>
-</html>
+<?php include(SHARED_PATH . '/footer.php') ?>
