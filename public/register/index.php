@@ -33,7 +33,7 @@ if (isset($_SESSION["user"])) {
            if ($password!==$passwordRepeat) {
             array_push($errors,"Password does not match");
            }
-           require_once "database.php";
+           require_once PRIVATE_PATH . 'database.php';
            $sql = "SELECT * FROM users WHERE email = '$email'";
            $result = mysqli_query($conn, $sql);
            $rowCount = mysqli_num_rows($result);
@@ -60,7 +60,7 @@ if (isset($_SESSION["user"])) {
            }
         }
         ?>
-        <form action="registration.php" method="post">
+        <form action="index.php" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" name="fullname" placeholder="Full Name:">
             </div>
