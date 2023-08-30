@@ -78,7 +78,7 @@ if (isset($_SESSION["user"])) {
             </div>
         </form>
         <div>
-        <div><p>Already Registered <a href="login.php">Login Here</a></p></div>
+        <div><p>Already Registered <a href="../index.php">Login Here</a></p></div>
       </div>
     </div>
 <?php include(SHARED_PATH . '/footer.php')?> 
